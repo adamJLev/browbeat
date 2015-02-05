@@ -197,7 +197,7 @@
             var parts = key.split('~');
             if (now - parseInt(parts[1], 10) > 2000) {
               self.store.removeItem(key);
-              console.log('collected', key);
+              self.log('Collected', key);
             }
           }
         }
