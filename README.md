@@ -71,7 +71,7 @@ this by writing something like this:
 var bb = new Browbeat();
 
 // If we win an election, establish a socket connection.
-bb.on('wonElection', function won() {
+bb.on('wonElection', function() {
   var socket = new WebSocket('myhost');
   socket.onopen = function connectionOpen() {
     socket.onmessage = function socketMessage(msg) {
@@ -86,8 +86,8 @@ bb.on('wonElection', function won() {
 });
 
 // Handle messages from master
-bb.on('slave', function slaveMessage(msg) {
-  var data = JSON.parse(msg.data);
+bb.on('message', function(msg) {
+  var data = JSON.parse(msg);
   alert(data);
 });
 ```
