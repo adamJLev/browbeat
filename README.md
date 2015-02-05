@@ -73,15 +73,13 @@ var bb = new Browbeat();
 // If we win an election, establish a socket connection.
 bb.on('wonElection', function() {
   var socket = new WebSocket('myhost');
-  socket.onopen = function connectionOpen() {
-    socket.onmessage = function socketMessage(msg) {
-      // Forward socket message to slaves
-      bb.messageSlaves(msg.data);
+  socket.onmessage = function() {
+    // Forward socket message to slaves
+    bb.messageSlaves(msg.data);
 
-      // Use data in this window
-      var data = JSON.parse(msg.data);
-      alert(data);
-    }
+    // Use data in this window
+    var data = JSON.parse(msg.data);
+    alert(data);
   }
 });
 
