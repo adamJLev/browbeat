@@ -148,7 +148,7 @@
       return;
     }
 
-    if (key.indexOf(MSG_PREFIX) === 0) {
+    if (event.newValue && key.indexOf(MSG_PREFIX) === 0) {
       var data = JSON.parse(event.newValue);
       switch (data.message) {
         case 'master':
@@ -405,7 +405,7 @@
     var hasExport = typeof exports !== 'undefined';
 
     if (hasDefine) {
-      define('Browbeat', Browbeat);
+      define(['browbeat'], function(){ return Browbeat });
     }
     else if (hasExport) {
       exports = Browbeat;
