@@ -313,7 +313,7 @@
   Browbeat.prototype.emit = function browbeatEventEmit(e, data) {
     if (!this.listeners[e]) return;
     data = data || {};
-    data.eventName = e;
+    // data.eventName = e;
     for (var i in this.listeners[e]) {
       this.listeners[e][i](data);
     }
